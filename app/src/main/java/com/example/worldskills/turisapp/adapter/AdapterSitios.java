@@ -34,8 +34,8 @@ public class AdapterSitios extends RecyclerView.Adapter<AdapterSitios.AdapterVie
     @Override
     public void onBindViewHolder(@NonNull AdapterSitios.AdapterViewHolder holder, int position) {
         holder.nombre.setText(lugaresVos.get(position).getNombre());
-        holder.descripcion.setText(lugaresVos.get(position).getNombre());
-        holder.ubicacion.setText(lugaresVos.get(position).getNombre());
+        holder.descripcion.setText("Descripcion :"+ lugaresVos.get(position).getDescripcioncorta());
+        holder.ubicacion.setText("Ubicacion :"+lugaresVos.get(position).getUbicacion());
         holder.img.setImageResource(R.drawable.hotelcontinentals);
     }
 

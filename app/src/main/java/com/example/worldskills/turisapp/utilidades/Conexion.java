@@ -16,7 +16,7 @@ public class Conexion extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + Utilidades.NOMBRE_TABLA);
+        db.execSQL("DROP TABLE IF EXISTS  TRUNCATE " + Utilidades.NOMBRE_TABLA);
         onCreate(db);
     }
 }

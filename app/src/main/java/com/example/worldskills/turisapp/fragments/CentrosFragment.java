@@ -1,9 +1,12 @@
 package com.example.worldskills.turisapp.fragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.worldskills.turisapp.R;
+import com.example.worldskills.turisapp.adapter.AdapterSitios;
 import com.example.worldskills.turisapp.entidades.LugaresVo;
+import com.example.worldskills.turisapp.utilidades.Conexion;
+import com.example.worldskills.turisapp.utilidades.Utilidades;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,10 +54,13 @@ public class CentrosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    RequestQueue request;
-    JsonObjectRequest jsonObjectRequest;
     LugaresVo lugaresVo;
-    ArrayList <LugaresVo> listaLugares;
+    ArrayList<LugaresVo> listaLugares;
+    View view;
+    RecyclerView recyclerView;
+    Conexion conn;
+    SQLiteDatabase bd;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -83,11 +92,35 @@ public class CentrosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        request = Volley.newRequestQueue(getContext());
+        view = inflater.inflate(R.layout.fragment_centros, container, false);
+        conn = new Conexion(getContext(), "LUGARES", null, 1);
+        recyclerView = view.findViewById(R.id.recyclercentros);
 
-        return inflater.inflate(R.layout.fragment_centros, container, false);
+        consultar();
+        return view;
     }
 
+    private void consultar() {
+        listaLugares = new ArrayList<>();
+        bd = conn.getReadableDatabase();
+
+        Cursor cursor = bd.rawQuery("SELECT * FROM " + Utilidades.NOMBRE_TABLA + " WHERE " + Utilidades.TIPO + " =1 ", null);
+
+        while (cursor.moveToNext()) {
+            lugaresVo = new LugaresVo();
+            lugaresVo.setNombre(cursor.getString(0));
+            lugaresVo.setDescripcioncorta(cursor.getString(1));
+            lugaresVo.setDescripcion(cursor.getString(2));
+            lugaresVo.setUbicacion(cursor.getString(3));
+            lugaresVo.setLatitud(cursor.getString(4));
+            lugaresVo.setLongitud(cursor.getString(5));
+            listaLugares.add(lugaresVo);
+        }
+
+        AdapterSitios adapterSitios = new AdapterSitios(listaLugares);
+
+        recyclerView.setAdapter(adapterSitios);
+    }
 
 
     // TODO: Rename method, update argument and hook method into UI event
