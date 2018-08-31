@@ -17,7 +17,10 @@ import android.view.View;
 
 import com.example.worldskills.turisapp.R;
 import com.example.worldskills.turisapp.entidades.AllFragments;
+import com.example.worldskills.turisapp.entidades.LugaresVo;
 import com.example.worldskills.turisapp.fragments.SitiosFragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,AllFragments{
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        registrarSitios();
+        registrarHoteles();
 
 /*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +54,57 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void registrarHoteles() {
+    }
+
+    private void registrarSitios() {
+        LugaresVo miLugaresVo=new LugaresVo();
+        ArrayList <LugaresVo> list=new ArrayList<>();
+
+        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
+        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setLatitud("4.6056941");
+        miLugaresVo.setLongitud("-74.0642803");
+
+        list.add(miLugaresVo);
+
+        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
+        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setLatitud("4.6056941");
+        miLugaresVo.setLongitud("-74.0642803");
+
+        list.add(miLugaresVo);
+        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
+        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setLatitud("4.6056941");
+        miLugaresVo.setLongitud("-74.0642803");
+
+        list.add(miLugaresVo);
+        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
+        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setLatitud("4.6056941");
+        miLugaresVo.setLongitud("-74.0642803");
+
+        list.add(miLugaresVo);
+
+        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
+        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setLatitud("4.6056941");
+        miLugaresVo.setLongitud("-74.0642803");
+
+        list.add(miLugaresVo);
     }
 
     @Override
