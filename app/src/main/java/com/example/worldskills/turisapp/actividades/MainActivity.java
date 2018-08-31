@@ -21,6 +21,7 @@ import com.example.worldskills.turisapp.entidades.LugaresVo;
 import com.example.worldskills.turisapp.entidades.Puente;
 import com.example.worldskills.turisapp.fragments.CentrosFragment;
 import com.example.worldskills.turisapp.fragments.HotelesFragment;
+import com.example.worldskills.turisapp.fragments.PirncipalFragment;
 import com.example.worldskills.turisapp.fragments.RestaurantesFragment;
 import com.example.worldskills.turisapp.utilidades.Conexion;
 import com.example.worldskills.turisapp.utilidades.Utilidades;
@@ -49,15 +50,6 @@ public class MainActivity extends AppCompatActivity
         registrarHoteles();
         registrasRestaurantes();
 
-/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -66,6 +58,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        fragment = new PirncipalFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenido, fragment).commit();
     }
 
     private void registrasRestaurantes() {
@@ -370,16 +365,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            fragment = new CentrosFragment();
+            fragment = new PirncipalFragment();
         } else if (id == R.id.nav_gallery) {
-            fragment = new HotelesFragment();
+            fragment = new CentrosFragment();
         } else if (id == R.id.nav_slideshow) {
-            fragment = new RestaurantesFragment();
+            fragment = new HotelesFragment();
         } else if (id == R.id.nav_manage) {
-
+            fragment = new RestaurantesFragment();
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenido, fragment).commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
