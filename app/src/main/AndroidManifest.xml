@@ -40,7 +40,11 @@
 
         <activity
             android:name=".actividades.GeneralActivity"
-            android:label="@string/title_activity_general"></activity>
+            android:label="@string/title_activity_general" />
+        <activity
+            android:name=".actividades.DetalleActivity"
+            android:label="@string/title_activity_detalle"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
