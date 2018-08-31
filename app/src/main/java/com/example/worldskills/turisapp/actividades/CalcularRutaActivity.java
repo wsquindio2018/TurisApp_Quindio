@@ -32,7 +32,6 @@ public class CalcularRutaActivity extends FragmentActivity implements OnMapReady
         mapFragment.getMapAsync(this);
 
 
-        cargarWebservices();
     }
 
 

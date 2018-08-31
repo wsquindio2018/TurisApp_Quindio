@@ -6,26 +6,36 @@
     android:orientation="vertical"
     tools:context=".fragments.PirncipalFragment">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/logo2" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bienvenido
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/logo"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido
 
 TurisApp es una app, desarrollada para turistas que estan de visita en bogota,
-Cuenta con información de los mejores sitios turisticos, Hoteles, Restaurante y Centros comerciales
-de la region"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="25dp" />
-    </LinearLayout>
+Cuenta con información de los mejores sitios turisticos, Hoteles, Restaurante y Centros comercialesde la region"
+                android:textAlignment="textStart"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

@@ -34,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -114,7 +115,16 @@ public class CentrosFragment extends Fragment {
                 miPuente.cambio();
             }
         });
+
+        MapasGenerales.lista=new HashMap<>();
+        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.monserrate));
+        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.simonbolivar));
+        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.andino));
+        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.plazadebolivar));
+        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.centromayor));
         consultar();
+
+
         return view;
     }
 
@@ -138,6 +148,14 @@ public class CentrosFragment extends Fragment {
         AdapterSitios adapterSitios = new AdapterSitios(listaLugares);
 
         recyclerView.setAdapter(adapterSitios);
+        adapterSitios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapasGenerales.nombre=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getNombre();
+                MapasGenerales.Descripcion=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getDescripcion();
+                miPuente.detalle();
+            }
+        });
     }
 
 

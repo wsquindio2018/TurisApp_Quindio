@@ -3,6 +3,7 @@ package com.example.worldskills.turisapp.actividades;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,10 +15,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.worldskills.turisapp.R;
 import com.example.worldskills.turisapp.entidades.AllFragments;
 import com.example.worldskills.turisapp.entidades.LugaresVo;
+import com.example.worldskills.turisapp.entidades.MapasGenerales;
 import com.example.worldskills.turisapp.entidades.Puente;
 import com.example.worldskills.turisapp.fragments.CentrosFragment;
 import com.example.worldskills.turisapp.fragments.HotelesFragment;
@@ -27,9 +30,10 @@ import com.example.worldskills.turisapp.utilidades.Conexion;
 import com.example.worldskills.turisapp.utilidades.Utilidades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AllFragments,Puente {
+        implements NavigationView.OnNavigationItemSelectedListener, AllFragments, Puente {
 
 
     Fragment fragment;
@@ -63,8 +67,10 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.contenido, fragment).commit();
     }
 
+
     private void registrasRestaurantes() {
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(1);
         miLugaresVo.setNombre("Juana La Loca");
         miLugaresVo.setTipolugar("3");
         miLugaresVo.setDescripcioncorta("Buenos cocteles, agradable grupos");
@@ -76,6 +82,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(2);
         miLugaresVo.setNombre("La fragata Giratoria");
         miLugaresVo.setTipolugar("3");
         miLugaresVo.setDescripcioncorta("El Restaurante La Fragata Giratorio es un sitio en donde se puede degustar comida de excelencia a base de productos marinos.");
@@ -86,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(3);
         miLugaresVo.setNombre("Criterion");
         miLugaresVo.setTipolugar("3");
         miLugaresVo.setDescripcioncorta("Criterion es el primer restaurante de alta cocina de los hermanos Rausch y su taller creativo");
@@ -99,6 +107,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(4);
         miLugaresVo.setNombre("Tramonti");
         miLugaresVo.setTipolugar("3");
         miLugaresVo.setDescripcioncorta("Entre montañas y bosques naturales desde donde se observa una de las mejores vista de Bogotá, se encuentra este chalet que tiene 25 años de tradición");
@@ -114,6 +123,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(5);
         miLugaresVo.setNombre("Tratoria La Divina Comedia");
         miLugaresVo.setTipolugar("3");
         miLugaresVo.setDescripcioncorta("Es una buena invitación para sentirse como en casa, ");
@@ -133,6 +143,7 @@ public class MainActivity extends AppCompatActivity
     private void registrarHoteles() {
         miLugaresVo = new LugaresVo();
         miLugaresVo.setNombre("Hotel Continental Bluedoors");
+        miLugaresVo.setId(6);
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Hotel sofisticado con un bar restaurante moderno y una cafetería, además de un gimnasio y un spa.");
         miLugaresVo.setUbicacion("Avenida Jiménez No. 4 - 16\n" +
@@ -145,6 +156,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(7);
         miLugaresVo.setNombre("Hotel Tequendama y centro de convenciones");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("El Hotel Tequendama Bogotá, ubicado en pleno centro de Bogotá y a tan sólo 15 minutos del Aeropuerto Internacional El Dorado");
@@ -159,6 +171,7 @@ public class MainActivity extends AppCompatActivity
 
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(8);
         miLugaresVo.setNombre("Bogota Marriot Hotel");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Hotel moderno de habitaciones luminosas con spa, comida italiana y japonesa, y traslados al aeropuerto gratis.");
@@ -171,6 +184,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(9);
         miLugaresVo.setNombre(" Hilton Bogota");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Habitaciones y suites chics (algunas con vistas a la montaña), restaurante colombiano y piscina descubierta.");
@@ -183,6 +197,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(10);
         miLugaresVo.setNombre("Hotel NH Collection Bogota");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Habitaciones y suites modernas en un hotel actual con un restaurante internacional, un piano bar y un spa.");
@@ -200,11 +215,12 @@ public class MainActivity extends AppCompatActivity
     private void registrarSitios() {
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setNombre("Cerro de Monserrate");
+        miLugaresVo.setNombre("Cerro de monserrate");
+        miLugaresVo.setId(11);
         miLugaresVo.setTipolugar("1");
-        miLugaresVo.setDescripcioncorta("El Cerro de Monserrate los espera durante los 365 días del año.");
+        miLugaresVo.setDescripcioncorta("El Cerro de monserrate los espera durante los 365 días del año.");
         miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
-        miLugaresVo.setDescripcion("El cerro de Monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. Monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de Monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
+        miLugaresVo.setDescripcion("El cerro de monserrate es el más conocido de los cerros Orientales de Bogotá. Junto a Guadalupe es uno de los cerros tutelares de la ciudad. monserrate tiene una altitud de 3152 m y se ubica sobre la cordillera oriental.1\u200B Los cerros de Bogotá, de origen sedimentario, tienen por lo menos 16 millones de años de antigüedad, con rocas de edad cretácica pertenecientes al Grupo guadalupe, en lo que se refiere al aspecto geológico. Hasta mediados del siglo XVII fue conocido como cerro de Las Nieves. La basílica del Señor de monserrate ha sido lugar de peregrinación religiosa desde la época colonial y se constituye en un atractivo natural, religioso, gastronómico de la ciudad. Se puede ascender al cerro por el sendero peatonal, por teleférico o por funicular.");
         miLugaresVo.setLatitud("4.6056941");
         miLugaresVo.setLongitud("-74.0642803");
 
@@ -212,6 +228,7 @@ public class MainActivity extends AppCompatActivity
 
         miLugaresVo = new LugaresVo();
         miLugaresVo.setTipolugar("1");
+        miLugaresVo.setId(12);
         miLugaresVo.setNombre("Parque Metropolitano Simon Bolivar");
         miLugaresVo.setDescripcioncorta("Área verde urbana con recorridos para caminantes y ciclistas, lago para andar en bote y un área de juego.");
         miLugaresVo.setUbicacion("Av. Calle 53 y Av. Esmeralda s/n, Bogotá, Cundinamarca");
@@ -238,6 +255,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(13);
         miLugaresVo.setTipolugar("1");
         miLugaresVo.setNombre("Centro Comercial Andino");
         miLugaresVo.setDescripcioncorta("El Centro Comercial Andino es el corazón de una de las zonas preferidas por los bogotanos y extranjeros");
@@ -253,6 +271,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
+        miLugaresVo.setId(14);
         miLugaresVo.setTipolugar("1");
         miLugaresVo.setNombre("Plaza de Bolivar");
         miLugaresVo.setDescripcioncorta("Centro urbano espacioso rodeado por una catedral y edificios importantes con una arquitectura destacada.");
@@ -267,6 +286,7 @@ public class MainActivity extends AppCompatActivity
 
         miLugaresVo = new LugaresVo();
         miLugaresVo.setTipolugar("1");
+        miLugaresVo.setId(15);
         miLugaresVo.setNombre("Centro Comercial Centro Mayor");
         miLugaresVo.setDescripcioncorta("Centro comercial Centro Mayor\n" +
                 "Grandes emociones para todos.\n" +
@@ -314,6 +334,7 @@ public class MainActivity extends AppCompatActivity
         ContentValues values;
         for (int i = 0; i < list.size(); i++) {
             values = new ContentValues();
+            values.put(Utilidades.ID, list.get(i).getId());
             values.put(Utilidades.NOMBRE_LUGAR, list.get(i).getNombre());
             values.put(Utilidades.TIPO, list.get(i).getTipolugar());
             values.put(Utilidades.DESCRIPCION_CORTA, list.get(i).getDescripcioncorta());
@@ -387,7 +408,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void cambio() {
-        Intent miIntent=new Intent(MainActivity.this,GeneralActivity.class);
+        Intent miIntent = new Intent(MainActivity.this, GeneralActivity.class);
+        startActivity(miIntent);
+    }
+
+    @Override
+    public void detalle() {
+        Intent miIntent = new Intent(MainActivity.this, DetalleActivity.class);
         startActivity(miIntent);
     }
 }

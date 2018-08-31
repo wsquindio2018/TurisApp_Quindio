@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.worldskills.turisapp.R;
 import com.example.worldskills.turisapp.entidades.LugaresVo;
+import com.example.worldskills.turisapp.entidades.MapasGenerales;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class AdapterSitios extends RecyclerView.Adapter<AdapterSitios.AdapterVie
         holder.nombre.setText(lugaresVos.get(position).getNombre());
         holder.descripcion.setText("Descripcion :"+ lugaresVos.get(position).getDescripcioncorta());
         holder.ubicacion.setText("Ubicacion :"+lugaresVos.get(position).getUbicacion());
-        holder.img.setImageResource(R.drawable.hotelcontinentals);
+        holder.img.setImageDrawable(MapasGenerales.lista.get(position+1));
     }
 
     @Override
@@ -47,7 +48,7 @@ public class AdapterSitios extends RecyclerView.Adapter<AdapterSitios.AdapterVie
     @Override
     public void onClick(View v) {
         if (listener!=null){
-            onClick(v);
+            listener.onClick(v);
         }
     }
 

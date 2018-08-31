@@ -13,6 +13,7 @@ public class LugaresVo {
     private String urlimagen;
 
 
+
     public LugaresVo(int id, String nombre, String descripcioncorta, String ubicacion, String descripcion, String latitud, String longitud, String tipolugar, String urlimagen) {
         this.id = id;
         this.nombre = nombre;

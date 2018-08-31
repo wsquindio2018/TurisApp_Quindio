@@ -128,6 +128,15 @@ public class RestaurantesFragment extends Fragment {
         AdapterSitios adapterSitios = new AdapterSitios(listaLugares);
 
         recyclerView.setAdapter(adapterSitios);
+
+        adapterSitios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapasGenerales.nombre=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getNombre();
+                MapasGenerales.Descripcion=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getDescripcion();
+                miPuente.detalle();
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
