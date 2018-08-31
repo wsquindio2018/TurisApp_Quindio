@@ -1,4 +1,4 @@
-package com.example.worldskills.turisapp;
+package com.example.worldskills.turisapp.actividades;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,10 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.worldskills.turisapp.R;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ///Victor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
