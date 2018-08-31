@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,6 +61,7 @@ public class CentrosFragment extends Fragment {
     RecyclerView recyclerView;
     Conexion conn;
     SQLiteDatabase bd;
+    FloatingActionButton actionButton;
 
     /**
      * Use this factory method to create a new instance of

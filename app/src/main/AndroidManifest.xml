@@ -39,8 +39,8 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".actividades.RutaActivity"
-            android:label="@string/title_activity_ruta"></activity>
+            android:name=".actividades.GeneralActivity"
+            android:label="@string/title_activity_general"></activity>
     </application>
 
 </manifest>
