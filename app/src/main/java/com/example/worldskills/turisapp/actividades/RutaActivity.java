@@ -55,7 +55,7 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void cargarWebServices(String lactitudI, String longitudI, String lactitudF, String longitudF) {
 
-        String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + lactitudI + "," + longitudI + "&destination=" + lactitudF + "," + longitudF;
+        String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + lactitudI + "," + longitudI + "&destination=" + lactitudF + "," + longitudF+"?";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
