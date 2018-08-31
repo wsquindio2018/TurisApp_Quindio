@@ -1,5 +1,6 @@
 package com.example.worldskills.turisapp.actividades;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -16,8 +17,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.PolyUtil;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RutaActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -25,12 +33,10 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
 
     RequestQueue request;
     JsonObjectRequest jsonObjectRequest;
-    String lactitudI;
-    String lactitudF;
-
-    String longitudI;
-    String longitudF;
-
+    String lactitudI = "4.611758";
+    String lactitudF = "-74.01124";
+    String longitudI = "4.672065";
+    String longitudF = "74.05126";
 
 
     @Override
@@ -44,16 +50,16 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        cargarWebServices(lactitudI,longitudI,lactitudF,longitudF);
+        cargarWebServices(lactitudI, longitudI, lactitudF, longitudF);
     }
 
     private void cargarWebServices(String lactitudI, String longitudI, String lactitudF, String longitudF) {
 
-        String url = "https://maps.googleapis.com/maps/api/directions/json?origin="+lactitudI+","+longitudI+"&destination="+lactitudF+","+longitudF;
+        String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" + lactitudI + "," + longitudI + "&destination=" + lactitudF + "," + longitudF;
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                cargarPuntos(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -61,10 +67,32 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+        request.add(jsonObjectRequest);
     }
 
+    private List cargarPuntos(JSONObject json) {
+        String polyline = "";
+        List lista = new ArrayList();
+        JSONArray jRoutes, jLegs, jSteps;
 
-
+        try {
+            jRoutes = json.getJSONArray("routes");
+            for (int i = 0; i < jRoutes.length(); i++) {
+                jLegs = ((JSONObject) (jRoutes.get(i))).getJSONArray("legs");
+                for (int j = 0; j < jLegs.length(); j++) {
+                    jSteps = ((JSONObject) (jLegs.get(i))).getJSONArray("steps");
+                    for (int k = 0; k < jSteps.length(); k++) {
+                        polyline = "" + ((JSONObject) ((JSONObject) jSteps.get(k)).get("polyline")).get("points");
+                        List<LatLng> list = PolyUtil.decode(polyline);
+                        mMap.addPolyline(new PolylineOptions().addAll(list).color(Color.GREEN));
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
 
     /**
      * Manipulates the map once available.
