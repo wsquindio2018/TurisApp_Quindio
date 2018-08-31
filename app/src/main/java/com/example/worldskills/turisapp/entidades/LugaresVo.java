@@ -1,5 +1,7 @@
 package com.example.worldskills.turisapp.entidades;
 
+import android.graphics.drawable.Drawable;
+
 public class LugaresVo {
 
     private int id;
@@ -10,7 +12,7 @@ public class LugaresVo {
     private String latitud;
     private String longitud;
     private String tipolugar;
-    private String urlimagen;
+    private Drawable urlimagen;
 
 
 
@@ -23,7 +25,6 @@ public class LugaresVo {
         this.latitud = latitud;
         this.longitud = longitud;
         this.tipolugar = tipolugar;
-        this.urlimagen = urlimagen;
     }
 
     public LugaresVo() {
@@ -93,11 +94,11 @@ public class LugaresVo {
         this.tipolugar = tipolugar;
     }
 
-    public String getUrlimagen() {
+    public Drawable getUrlimagen() {
         return urlimagen;
     }
 
-    public void setUrlimagen(String urlimagen) {
+    public void setUrlimagen(Drawable urlimagen) {
         this.urlimagen = urlimagen;
     }
 }

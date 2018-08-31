@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import com.example.worldskills.turisapp.utilidades.Conexion;
 import com.example.worldskills.turisapp.utilidades.Utilidades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,6 +104,17 @@ public class RestaurantesFragment extends Fragment {
                 miPuente.cambio();
             }
         });
+
+        MapasGenerales.lista=null;
+        HashMap<Integer ,Drawable> list=new HashMap<>();
+
+        list.put(1, getResources().getDrawable(R.drawable.juanalaloca));
+        list.put(2, getResources().getDrawable(R.drawable.fragata));
+        list.put(3, getResources().getDrawable(R.drawable.criterion));
+        list.put(4, getResources().getDrawable(R.drawable.tramonti));
+        list.put(5, getResources().getDrawable(R.drawable.tratoria));
+
+        MapasGenerales.lista=list;
         consultar();
 
         return view;

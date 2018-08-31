@@ -37,9 +37,11 @@ public class DetalleActivity extends AppCompatActivity {
 
         nombre=findViewById(R.id.nombreDetalle);
         detalle=findViewById(R.id.campoDescripcionLarga);
+        img=findViewById(R.id.imgDetalle);
 
         nombre.setText(" "+ MapasGenerales.nombre);
         detalle.setText(" "+ MapasGenerales.Descripcion);
+        img.setImageDrawable(MapasGenerales.lista.get(MapasGenerales.img));
     }
 
 }

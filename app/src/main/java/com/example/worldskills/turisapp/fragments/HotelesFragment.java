@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +24,7 @@ import com.example.worldskills.turisapp.utilidades.Conexion;
 import com.example.worldskills.turisapp.utilidades.Utilidades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,7 +105,19 @@ public class HotelesFragment extends Fragment {
                 miPuente.cambio();
             }
         });
+        MapasGenerales.lista.clear();
+        HashMap<Integer ,Drawable> list=new HashMap<>();
+
+        list.put(1, getResources().getDrawable(R.drawable.hotelcontinentals));
+        list.put(2, getResources().getDrawable(R.drawable.hoteltequendama));
+        list.put(3, getResources().getDrawable(R.drawable.hotelmarriot));
+        list.put(4, getResources().getDrawable(R.drawable.hotelhilton));
+        list.put(5, getResources().getDrawable(R.drawable.hotelnh));
+
+        MapasGenerales.lista=list;
         consultar();
+
+
 
         return view;
     }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -116,12 +118,17 @@ public class CentrosFragment extends Fragment {
             }
         });
 
-        MapasGenerales.lista=new HashMap<>();
-        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.monserrate));
-        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.simonbolivar));
-        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.andino));
-        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.plazadebolivar));
-        MapasGenerales.lista.put(1, getResources().getDrawable(R.drawable.centromayor));
+
+        MapasGenerales.lista=null;
+        HashMap<Integer ,Drawable> list=new HashMap<>();
+
+        list.put(1, getResources().getDrawable(R.drawable.monserrate));
+        list.put(2, getResources().getDrawable(R.drawable.simonbolivar));
+        list.put(3, getResources().getDrawable(R.drawable.andino));
+        list.put(4, getResources().getDrawable(R.drawable.plazadebolivar));
+        list.put(5, getResources().getDrawable(R.drawable.centromayor));
+
+        MapasGenerales.lista=list;
         consultar();
 
 
@@ -153,6 +160,7 @@ public class CentrosFragment extends Fragment {
             public void onClick(View v) {
                 MapasGenerales.nombre=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getNombre();
                 MapasGenerales.Descripcion=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getDescripcion();
+                MapasGenerales.img=listaLugares.get(recyclerView.getChildAdapterPosition(v)).getId();
                 miPuente.detalle();
             }
         });

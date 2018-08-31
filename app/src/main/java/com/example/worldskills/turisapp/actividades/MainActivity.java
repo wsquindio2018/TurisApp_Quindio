@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
     private void registrarHoteles() {
         miLugaresVo = new LugaresVo();
         miLugaresVo.setNombre("Hotel Continental Bluedoors");
-        miLugaresVo.setId(6);
+        miLugaresVo.setId(1);
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Hotel sofisticado con un bar restaurante moderno y una cafetería, además de un gimnasio y un spa.");
         miLugaresVo.setUbicacion("Avenida Jiménez No. 4 - 16\n" +
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(7);
+        miLugaresVo.setId(2);
         miLugaresVo.setNombre("Hotel Tequendama y centro de convenciones");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("El Hotel Tequendama Bogotá, ubicado en pleno centro de Bogotá y a tan sólo 15 minutos del Aeropuerto Internacional El Dorado");
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity
 
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(8);
+        miLugaresVo.setId(3);
         miLugaresVo.setNombre("Bogota Marriot Hotel");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Hotel moderno de habitaciones luminosas con spa, comida italiana y japonesa, y traslados al aeropuerto gratis.");
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(9);
+        miLugaresVo.setId(4);
         miLugaresVo.setNombre(" Hilton Bogota");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Habitaciones y suites chics (algunas con vistas a la montaña), restaurante colombiano y piscina descubierta.");
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(10);
+        miLugaresVo.setId(5);
         miLugaresVo.setNombre("Hotel NH Collection Bogota");
         miLugaresVo.setTipolugar("2");
         miLugaresVo.setDescripcioncorta("Habitaciones y suites modernas en un hotel actual con un restaurante internacional, un piano bar y un spa.");
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity
 
         miLugaresVo = new LugaresVo();
         miLugaresVo.setNombre("Cerro de monserrate");
-        miLugaresVo.setId(11);
+        miLugaresVo.setId(1);
         miLugaresVo.setTipolugar("1");
         miLugaresVo.setDescripcioncorta("El Cerro de monserrate los espera durante los 365 días del año.");
         miLugaresVo.setUbicacion("Carrera 2 E No. 21-48 | Paseo Bolívar, Bogota, Colombia");
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity
 
         miLugaresVo = new LugaresVo();
         miLugaresVo.setTipolugar("1");
-        miLugaresVo.setId(12);
+        miLugaresVo.setId(2);
         miLugaresVo.setNombre("Parque Metropolitano Simon Bolivar");
         miLugaresVo.setDescripcioncorta("Área verde urbana con recorridos para caminantes y ciclistas, lago para andar en bote y un área de juego.");
         miLugaresVo.setUbicacion("Av. Calle 53 y Av. Esmeralda s/n, Bogotá, Cundinamarca");
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(13);
+        miLugaresVo.setId(3);
         miLugaresVo.setTipolugar("1");
         miLugaresVo.setNombre("Centro Comercial Andino");
         miLugaresVo.setDescripcioncorta("El Centro Comercial Andino es el corazón de una de las zonas preferidas por los bogotanos y extranjeros");
@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity
         list.add(miLugaresVo);
 
         miLugaresVo = new LugaresVo();
-        miLugaresVo.setId(14);
+        miLugaresVo.setId(4);
         miLugaresVo.setTipolugar("1");
         miLugaresVo.setNombre("Plaza de Bolivar");
         miLugaresVo.setDescripcioncorta("Centro urbano espacioso rodeado por una catedral y edificios importantes con una arquitectura destacada.");
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity
 
         miLugaresVo = new LugaresVo();
         miLugaresVo.setTipolugar("1");
-        miLugaresVo.setId(15);
+        miLugaresVo.setId(5);
         miLugaresVo.setNombre("Centro Comercial Centro Mayor");
         miLugaresVo.setDescripcioncorta("Centro comercial Centro Mayor\n" +
                 "Grandes emociones para todos.\n" +

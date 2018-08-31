@@ -9,7 +9,7 @@ public class MapasGenerales {
 
     public static int id;
     public static int zoom;
-    public static int imagen;
+    public static int img;
     public static String nombre;
     public static String Descripcion;
     public static HashMap<Integer ,Drawable> lista;
