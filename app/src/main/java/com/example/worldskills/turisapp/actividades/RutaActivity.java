@@ -3,6 +3,12 @@ package com.example.worldskills.turisapp.actividades;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.worldskills.turisapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,10 +17,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONObject;
+
 public class RutaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
     String lactitudI;
     String lactitudF;
 
@@ -22,10 +32,12 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
     String longitudF;
 
 
-    //https://maps.googleapis.com/maps/api/directions/json?origin=parametroLatitud,parametroLongitud&destination=parametroLatitud,parametroLongitud
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        request = Volley.newRequestQueue(getApplicationContext());
         setContentView(R.layout.activity_ruta);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -37,7 +49,21 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void cargarWebServices(String lactitudI, String longitudI, String lactitudF, String longitudF) {
 
+        String url = "https://maps.googleapis.com/maps/api/directions/json?origin="+lactitudI+","+longitudI+"&destination="+lactitudF+","+longitudF;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
+
+
 
 
     /**
