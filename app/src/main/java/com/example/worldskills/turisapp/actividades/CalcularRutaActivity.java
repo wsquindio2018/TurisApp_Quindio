@@ -3,6 +3,9 @@ package com.example.worldskills.turisapp.actividades;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.worldskills.turisapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,15 +17,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class CalcularRutaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    JsonObjectRequest jsonObjectRequest;
+    RequestQueue request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calcular_ruta);
+        request = Volley.newRequestQueue(getApplicationContext());
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        cargarWebservices();
     }
 
 
