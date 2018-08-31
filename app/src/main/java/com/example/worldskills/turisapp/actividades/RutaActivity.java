@@ -36,7 +36,7 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
     String lactitudI = "4.611758";
     String lactitudF = "-74.01124";
     String longitudI = "4.672065";
-    String longitudF = "74.05126";
+    String longitudF = "-74.05126";
 
 
     @Override
@@ -80,7 +80,7 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
             for (int i = 0; i < jRoutes.length(); i++) {
                 jLegs = ((JSONObject) (jRoutes.get(i))).getJSONArray("legs");
                 for (int j = 0; j < jLegs.length(); j++) {
-                    jSteps = ((JSONObject) (jLegs.get(i))).getJSONArray("steps");
+                    jSteps = ((JSONObject) (jLegs.get(j))).getJSONArray("steps");
                     for (int k = 0; k < jSteps.length(); k++) {
                         polyline = "" + ((JSONObject) ((JSONObject) jSteps.get(k)).get("polyline")).get("points");
                         List<LatLng> list = PolyUtil.decode(polyline);
@@ -108,8 +108,5 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

@@ -1,4 +1,4 @@
-package com.example.worldskills.turisapp;
+package com.example.worldskills.turisapp.actividades;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.worldskills.turisapp.R;
 import com.example.worldskills.turisapp.entidades.AllFragments;
 import com.example.worldskills.turisapp.fragments.SitiosFragment;
 

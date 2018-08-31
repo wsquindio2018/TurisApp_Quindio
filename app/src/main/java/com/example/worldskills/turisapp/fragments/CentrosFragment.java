@@ -7,8 +7,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.worldskills.turisapp.R;
+import com.example.worldskills.turisapp.entidades.LugaresVo;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /**
@@ -35,6 +48,10 @@ public class CentrosFragment extends Fragment {
         // Required empty public constructor
     }
 
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
+    LugaresVo lugaresVo;
+    ArrayList <LugaresVo> listaLugares;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -66,8 +83,12 @@ public class CentrosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        request = Volley.newRequestQueue(getContext());
+
         return inflater.inflate(R.layout.fragment_centros, container, false);
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
