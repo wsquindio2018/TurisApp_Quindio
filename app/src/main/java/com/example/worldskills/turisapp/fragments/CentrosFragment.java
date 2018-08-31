@@ -1,6 +1,8 @@
 package com.example.worldskills.turisapp.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -20,8 +22,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.worldskills.turisapp.R;
+import com.example.worldskills.turisapp.actividades.MainActivity;
 import com.example.worldskills.turisapp.adapter.AdapterSitios;
 import com.example.worldskills.turisapp.entidades.LugaresVo;
+import com.example.worldskills.turisapp.entidades.MapasGenerales;
+import com.example.worldskills.turisapp.entidades.Puente;
 import com.example.worldskills.turisapp.utilidades.Conexion;
 import com.example.worldskills.turisapp.utilidades.Utilidades;
 
@@ -55,6 +60,8 @@ public class CentrosFragment extends Fragment {
         // Required empty public constructor
     }
 
+    Puente miPuente;
+    Activity activity;
     LugaresVo lugaresVo;
     ArrayList<LugaresVo> listaLugares;
     View view;
@@ -97,7 +104,16 @@ public class CentrosFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_centros, container, false);
         conn = new Conexion(getContext(), "LUGARES", null, 1);
         recyclerView = view.findViewById(R.id.recyclercentros);
+        actionButton=view.findViewById(R.id.mapaGeneral);
 
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapasGenerales.id=1;
+                MapasGenerales.zoom=10;
+                miPuente.cambio();
+            }
+        });
         consultar();
         return view;
     }
@@ -135,6 +151,10 @@ public class CentrosFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof Activity){
+            this.activity= (Activity) context;
+            this.miPuente= (Puente) activity;
+        }
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

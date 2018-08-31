@@ -1,14 +1,27 @@
 package com.example.worldskills.turisapp.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.worldskills.turisapp.R;
+import com.example.worldskills.turisapp.adapter.AdapterSitios;
+import com.example.worldskills.turisapp.entidades.LugaresVo;
+import com.example.worldskills.turisapp.entidades.MapasGenerales;
+import com.example.worldskills.turisapp.entidades.Puente;
+import com.example.worldskills.turisapp.utilidades.Conexion;
+import com.example.worldskills.turisapp.utilidades.Utilidades;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +46,16 @@ public class RestaurantesFragment extends Fragment {
     public RestaurantesFragment() {
         // Required empty public constructor
     }
+
+    Puente miPuente;
+    Activity activity;
+    LugaresVo lugaresVo;
+    ArrayList<LugaresVo> listaLugares;
+    View view;
+    RecyclerView recyclerView;
+    Conexion conn;
+    SQLiteDatabase bd;
+    FloatingActionButton actionButton;
 
     /**
      * Use this factory method to create a new instance of
@@ -65,7 +88,46 @@ public class RestaurantesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurantes, container, false);
+
+        view = inflater.inflate(R.layout.fragment_restaurantes, container, false);
+        conn = new Conexion(getContext(), "LUGARES", null, 1);
+        recyclerView = view.findViewById(R.id.recyclerRestaurante);
+        actionButton = view.findViewById(R.id.mapaGeneral);
+
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapasGenerales.id = 3;
+                MapasGenerales.zoom=13;
+                miPuente.cambio();
+            }
+        });
+        consultar();
+
+        return view;
+    }
+
+
+    private void consultar() {
+        listaLugares = new ArrayList<>();
+        bd = conn.getReadableDatabase();
+
+        Cursor cursor = bd.rawQuery("SELECT * FROM " + Utilidades.NOMBRE_TABLA + " WHERE " + Utilidades.TIPO + " =3 ", null);
+
+        while (cursor.moveToNext()) {
+            lugaresVo = new LugaresVo();
+            lugaresVo.setNombre(cursor.getString(0));
+            lugaresVo.setDescripcioncorta(cursor.getString(1));
+            lugaresVo.setDescripcion(cursor.getString(2));
+            lugaresVo.setUbicacion(cursor.getString(3));
+            lugaresVo.setLatitud(cursor.getString(4));
+            lugaresVo.setLongitud(cursor.getString(5));
+            listaLugares.add(lugaresVo);
+        }
+
+        AdapterSitios adapterSitios = new AdapterSitios(listaLugares);
+
+        recyclerView.setAdapter(adapterSitios);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -78,6 +140,10 @@ public class RestaurantesFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof Activity) {
+            this.activity = (Activity) context;
+            this.miPuente = (Puente) activity;
+        }
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
