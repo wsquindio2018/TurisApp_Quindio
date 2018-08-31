@@ -88,6 +88,7 @@ public class RutaActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
             }
+            ///2B:DD:A5:08:A8:A1:98:81:04:B9:59:51:46:0B:87:F2:A9:E9:C4:11;com.example.worldskills.turisapp
         } catch (JSONException e) {
             e.printStackTrace();
         }
