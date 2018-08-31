@@ -17,6 +17,7 @@ public class AdapterSitios extends RecyclerView.Adapter<AdapterSitios.AdapterVie
 
 
     ArrayList<LugaresVo> lugaresVos;
+    View.OnClickListener listener;
 
     public AdapterSitios(ArrayList<LugaresVo> lugaresVos) {
         this.lugaresVos = lugaresVos;
@@ -40,12 +41,18 @@ public class AdapterSitios extends RecyclerView.Adapter<AdapterSitios.AdapterVie
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lugaresVos.size();
     }
 
     @Override
     public void onClick(View v) {
+        if (listener!=null){
+            onClick(v);
+        }
+    }
 
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener=listener;
     }
 
     public class AdapterViewHolder extends RecyclerView.ViewHolder {
