@@ -377,10 +377,6 @@ public class MainActivity extends AppCompatActivity
             fragment = new RestaurantesFragment();
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, fragment).commit();
